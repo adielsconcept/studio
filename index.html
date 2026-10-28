@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Diel: A Diels Concept. Featured work, courses, affiliates and services.">
+<title>Diel: A Diels Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Archivo:wght@800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: one long ascent. A full-bleed heavenly hero with the wordmark under a halo, then five sections that read like stations on the way up, ending in a quiet contact altar. */
+:root {
+  --night: #0a0706;
+  --deep: #15100e;
+  --veil: #241a17;
+  --gold: #d9a06a;
+  --gold-hi: #f6d3a8;
+  --gold-lo: #8a5230;
+  --mist: #cfc3bb;
+  --text: #f5ece6;
+  --line: rgba(217, 160, 106, 0.28);
+  --font-display: "Archivo", "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  --font-head: "Cinzel", Georgia, "Times New Roman", serif;
+  --font-body: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  line-height: 1.55;
+  overflow-x: hidden;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 30;
+  background: rgba(10, 7, 6, 0.9);
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.in {
+  max-width: 1100px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* header */
+.top {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 20;
+  background: rgba(10, 7, 6, 0.82);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.top .in { display: flex; align-items: center; gap: 1.2rem; padding-block: 0.7rem; }
+.brand {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.6rem;
+  text-decoration: none;
+  color: var(--gold);
+  letter-spacing: -0.02em;
+}
+.top nav { display: flex; gap: 1.3rem; margin-left: auto; overflow-x: auto; scrollbar-width: none; min-width: 0; }
+.top nav::-webkit-scrollbar { display: none; }
+.top nav a {
+  font-family: var(--font-head);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--mist);
+  white-space: nowrap;
+  padding-block: 0.4rem;
+}
+.top nav a:hover { color: var(--gold-hi); }
+
+/* hero */
+.hero {
+  --eye-h: clamp(320px, 62vw, 640px);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 66%, rgba(217, 160, 106, 0.22), transparent 70%),
+    linear-gradient(180deg, var(--night), var(--deep) 100%);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: repeating-conic-gradient(from 0deg at 50% 70%, rgba(246, 211, 168, 0.1) 0deg 2.4deg, transparent 2.4deg 8deg);
+  -webkit-mask-image: radial-gradient(ellipse 80% 55% at 50% 70%, #000 0%, transparent 70%);
+  mask-image: radial-gradient(ellipse 80% 55% at 50% 70%, #000 0%, transparent 70%);
+  animation: sway 14s ease-in-out infinite alternate;
+}
+@keyframes sway { from { opacity: 0.5; transform: scale(1); } to { opacity: 1; transform: scale(1.06); } }
+.eye {
+  position: absolute;
+  inset: 0 0 auto;
+  height: var(--eye-h);
+  z-index: -1;
+  background: url("eye.jpg") 50% 36% / cover no-repeat;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 52%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 52%, transparent 100%);
+}
+.eye::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10, 7, 6, 0.55), transparent 22%, transparent 78%, rgba(10, 7, 6, 0.55)); }
+#motes { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+.hero .in { text-align: center; padding-block: calc(var(--eye-h) - 2.2rem) clamp(3rem, 7vw, 5rem); }
+.mark {
+  position: relative;
+  display: inline-block;
+  font-size: clamp(5rem, 21vw, 10rem);
+  line-height: 1;
+  padding-top: 0.2em;
+}
+.mark .halo {
+  position: absolute;
+  left: 50%;
+  top: 0.02em;
+  width: 0.62em;
+  height: 0.15em;
+  transform: translateX(-50%) rotate(-3deg);
+  border: 0.018em solid var(--gold-hi);
+  border-radius: 50%;
+  box-shadow: 0 0 0.12em rgba(246, 211, 168, 0.9), 0 0 0.4em rgba(230, 170, 110, 0.55), inset 0 0 0.1em rgba(246, 211, 168, 0.7);
+  animation: breathe 5s ease-in-out infinite alternate;
+}
+@keyframes breathe { from { opacity: 0.75; } to { opacity: 1; } }
+.wordmark {
+  display: block;
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  background: linear-gradient(180deg, var(--gold-hi) 0%, var(--gold) 52%, var(--gold-lo) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 0.14em rgba(230, 170, 110, 0.45));
+}
+.concept {
+  margin: 0.6rem 0 0;
+  font-family: var(--font-head);
+  font-size: clamp(0.8rem, 2.6vw, 1.05rem);
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding-left: 0.5em;
+}
+.tagline {
+  margin: 1.6rem auto 0;
+  max-width: 34ch;
+  font-size: clamp(1.4rem, 4vw, 1.9rem);
+  font-style: italic;
+  color: var(--text);
+  text-wrap: balance;
+}
+.cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.9rem; margin-top: 2.2rem; }
+.btn {
+  display: inline-block;
+  font-family: var(--font-head);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.95rem 1.7rem;
+  border: 1px solid var(--gold);
+  color: var(--gold-hi);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, box-shadow 0.25s;
+}
+.btn:hover { box-shadow: 0 0 1.4rem rgba(217, 160, 106, 0.4); background: rgba(217, 160, 106, 0.12); }
+.btn.solid { background: linear-gradient(180deg, var(--gold-hi), var(--gold)); color: var(--night); border-color: transparent; font-weight: 600; }
+.btn.solid:hover { box-shadow: 0 0 1.8rem rgba(236, 180, 120, 0.6); background: linear-gradient(180deg, #fff, var(--gold-hi)); }
+
+/* sections */
+section { padding-block: clamp(3.5rem, 8vw, 6rem); }
+section + section { border-top: 1px solid var(--line); }
+.head { text-align: center; margin-bottom: 3rem; }
+.head h2 {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 500;
+  font-size: clamp(1.7rem, 5vw, 2.6rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-wrap: balance;
+}
+.head h2::after {
+  content: "";
+  display: block;
+  width: 5rem;
+  height: 1px;
+  margin: 1.1rem auto 0;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.head p { margin: 1rem auto 0; max-width: 46ch; color: var(--mist); text-wrap: balance; }
+.grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); }
+
+/* featured work */
+.work { display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--line); background: rgba(36, 26, 23, 0.45); transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s; }
+.work:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 0 2.2rem rgba(217, 160, 106, 0.22); }
+.plate { aspect-ratio: 4 / 3; max-width: 100%; position: relative; overflow: hidden; }
+.plate::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 38%, rgba(246, 211, 168, 0.5), transparent 38%); mix-blend-mode: screen; }
+.p1 { background: linear-gradient(160deg, #5a3a28 0%, #241a17 60%, #0a0706 100%); }
+.p2 { background: linear-gradient(200deg, #8a5230 0%, #3a2f38 55%, #0a0706 100%); }
+.p3 { background: linear-gradient(180deg, #4a4552 0%, #231c24 60%, #0a0706 100%); }
+.plate svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.work .body { padding: 1.3rem 1.4rem 1.6rem; }
+.tag { font-family: var(--font-head); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+.work h3, .course h3, .svc h3 { margin: 0.5rem 0 0.4rem; font-family: var(--font-head); font-weight: 500; font-size: 1.3rem; letter-spacing: 0.06em; color: var(--text); }
+.work p, .course p, .svc p { margin: 0; color: var(--mist); }
+
+/* courses */
+.course { display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; padding: 1.8rem 1.6rem; border: 1px solid var(--line); background: linear-gradient(180deg, rgba(217, 160, 106, 0.09), rgba(36, 26, 23, 0.3)); }
+.course .meta { margin: 1rem 0 1.4rem; display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; font-family: var(--font-head); font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+.course .btn { align-self: flex-start; margin-top: auto; padding: 0.8rem 1.3rem; }
+
+/* affiliates */
+.steps { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); counter-reset: s; margin-bottom: 2.5rem; }
+.step { min-width: 0; padding: 1.5rem; border-top: 2px solid var(--gold); background: rgba(36, 26, 23, 0.4); counter-increment: s; }
+.step::before { content: counter(s, upper-roman); font-family: var(--font-head); font-size: 1.7rem; color: var(--gold); }
+.step h3 { margin: 0.4rem 0; font-family: var(--font-head); font-weight: 500; font-size: 1.15rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.step p { margin: 0; color: var(--mist); }
+.center { text-align: center; }
+
+/* services */
+.svc-list { display: grid; }
+.svc { display: grid; grid-template-columns: minmax(0, 18rem) minmax(0, 1fr); gap: 0.5rem 2.5rem; align-items: baseline; padding-block: 1.6rem; border-bottom: 1px solid var(--line); }
+.svc:first-child { border-top: 1px solid var(--line); }
+.svc h3 { margin: 0; color: var(--gold); font-size: 1.2rem; }
+@media (max-width: 640px) { .svc { grid-template-columns: minmax(0, 1fr); } }
+
+/* contact */
+.altar { max-width: 640px; margin-inline: auto; border: 1px solid var(--gold); padding: clamp(1.4rem, 5vw, 2.4rem); background: radial-gradient(ellipse at 50% 0%, rgba(246, 200, 150, 0.16), transparent 70%), rgba(21, 16, 14, 0.8); box-shadow: 0 0 3rem rgba(217, 160, 106, 0.14); }
+.row { display: grid; gap: 0.5rem; padding-block: 1.2rem; }
+.row + .row { border-top: 1px solid var(--line); }
+.row .k { font-family: var(--font-head); font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+.row .v { font-size: clamp(1.15rem, 4.4vw, 1.55rem); color: var(--gold-hi); overflow-wrap: anywhere; user-select: all; }
+.acts { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+.acts .btn { padding: 0.6rem 1.1rem; font-size: 0.7rem; }
+
+footer { padding-block: 2.5rem 3rem; text-align: center; border-top: 1px solid var(--line); color: var(--mist); font-size: 1rem; }
+footer .brand { font-size: 1.8rem; display: inline-block; margin-bottom: 0.4rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero::before, .mark .halo { animation: none; }
+  .work { transition: none; }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="in">
+    <a class="brand" href="#top">Diel</a>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#courses">Courses</a>
+      <a href="#affiliates">Affiliates</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="eye" role="img" aria-label="Close-up of an eye framed by a dark scarf"></div>
+    <canvas id="motes" aria-hidden="true"></canvas>
+    <div class="in">
+      <div class="mark">
+        <span class="halo" aria-hidden="true"></span>
+        <h1 class="wordmark">Diel</h1>
+      </div>
+      <p class="concept">A Diels Concept</p>
+      <p class="tagline">Ideas, craft and teaching, raised to a higher standard.</p>
+      <div class="cta">
+        <a class="btn solid" href="#work">See the work</a>
+        <a class="btn" href="#contact">Speak to Diel</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="in">
+      <div class="head">
+        <h2>Featured Work</h2>
+        <p>A few of the pieces that carry the Diel name.</p>
+      </div>
+      <div class="grid">
+        <article class="work">
+          <div class="plate p1">
+            <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="200" cy="110" rx="62" ry="16" fill="none" stroke="#f6d3a8" stroke-width="3" opacity="0.9"/><path d="M200 130 L200 250" stroke="#d9a06a" stroke-width="2" opacity="0.7"/><path d="M120 250 Q200 170 280 250" fill="none" stroke="#d9a06a" stroke-width="2" opacity="0.6"/></svg>
+          </div>
+          <div class="body">
+            <span class="tag">Brand Identity</span>
+            <h3>The Ascension Campaign</h3>
+            <p>A launch identity built around light, rising lines and a single gold mark.</p>
+          </div>
+        </article>
+        <article class="work">
+          <div class="plate p2">
+            <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="200" cy="130" r="58" fill="none" stroke="#f6d3a8" stroke-width="2.5" opacity="0.9"/><circle cx="200" cy="130" r="86" fill="none" stroke="#d9a06a" stroke-width="1.5" opacity="0.55"/><circle cx="200" cy="130" r="114" fill="none" stroke="#d9a06a" stroke-width="1" opacity="0.3"/></svg>
+          </div>
+          <div class="body">
+            <span class="tag">Motion &amp; Film</span>
+            <h3>Halo Sessions</h3>
+            <p>A short film series with a slow, luminous visual language and original sound.</p>
+          </div>
+        </article>
+        <article class="work">
+          <div class="plate p3">
+            <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M60 240 L200 70 L340 240 Z" fill="none" stroke="#f6d3a8" stroke-width="2.5" opacity="0.85"/><path d="M110 240 L200 130 L290 240" fill="none" stroke="#d9a06a" stroke-width="1.5" opacity="0.55"/></svg>
+          </div>
+          <div class="body">
+            <span class="tag">Digital Product</span>
+            <h3>Temple Interface</h3>
+            <p>A calm, high-contrast web experience designed for focus and reverence for the reader.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="courses">
+    <div class="in">
+      <div class="head">
+        <h2>Courses</h2>
+        <p>Learn the craft step by step, at your own pace.</p>
+      </div>
+      <div class="grid">
+        <article class="course">
+          <span class="tag">Beginner</span>
+          <h3>Foundations of Creative Practice</h3>
+          <p>Build the habits, tools and eye you need to start making work you are proud of.</p>
+          <div class="meta"><span>Self-paced</span><span>Video lessons</span></div>
+          <a class="btn" href="https://wa.me/1872917022?text=I%20want%20to%20enroll%20in%20Foundations%20of%20Creative%20Practice" target="_blank" rel="noopener">Enroll</a>
+        </article>
+        <article class="course">
+          <span class="tag">Intermediate</span>
+          <h3>Brand Building Masterclass</h3>
+          <p>Turn an idea into a brand people remember: name, mark, voice and launch.</p>
+          <div class="meta"><span>Live cohort</span><span>Projects</span></div>
+          <a class="btn" href="https://wa.me/1872917022?text=I%20want%20to%20enroll%20in%20the%20Brand%20Building%20Masterclass" target="_blank" rel="noopener">Enroll</a>
+        </article>
+        <article class="course">
+          <span class="tag">Advanced</span>
+          <h3>Selling Your Creative Work</h3>
+          <p>Price, pitch and package your services so the right clients find you and stay.</p>
+          <div class="meta"><span>Workshop</span><span>Templates</span></div>
+          <a class="btn" href="https://wa.me/1872917022?text=I%20want%20to%20enroll%20in%20Selling%20Your%20Creative%20Work" target="_blank" rel="noopener">Enroll</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="affiliates">
+    <div class="in">
+      <div class="head">
+        <h2>Affiliates</h2>
+        <p>Share Diel with people who need it and earn when they join.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>Join</h3><p>Message Diel to become an affiliate and receive your personal link.</p></div>
+        <div class="step"><h3>Share</h3><p>Recommend the courses and services to your audience and friends.</p></div>
+        <div class="step"><h3>Earn</h3><p>Receive a commission on every sale that comes through your link.</p></div>
+      </div>
+      <div class="center"><a class="btn solid" href="https://wa.me/1872917022?text=I%20want%20to%20become%20a%20Diel%20affiliate" target="_blank" rel="noopener">Become an affiliate</a></div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="in">
+      <div class="head">
+        <h2>Services</h2>
+        <p>Work done for you, from first sketch to final delivery.</p>
+      </div>
+      <div class="svc-list">
+        <div class="svc"><h3>Brand Design</h3><p>Logos, colour, type and the guidelines that keep a brand consistent everywhere.</p></div>
+        <div class="svc"><h3>Web Design</h3><p>Fast, beautiful websites that explain what you do and make it easy to contact you.</p></div>
+        <div class="svc"><h3>Motion &amp; Video</h3><p>Ads, intros and short films that hold attention from the first second.</p></div>
+        <div class="svc"><h3>Creative Direction</h3><p>A clear concept and visual plan for campaigns, launches and content.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="in">
+      <div class="head">
+        <h2>Contact</h2>
+        <p>Tell Diel what you are building. Replies come by email or WhatsApp.</p>
+      </div>
+      <div class="altar">
+        <div class="row">
+          <span class="k">Email</span>
+          <span class="v" id="email">adielsconcept@gmail.com</span>
+          <div class="acts">
+            <button class="btn" type="button" data-copy="email">Copy</button>
+            <a class="btn" href="mailto:adielsconcept@gmail.com">Open mail</a>
+          </div>
+        </div>
+        <div class="row">
+          <span class="k">WhatsApp</span>
+          <span class="v" id="wa">+1 872 917 022</span>
+          <div class="acts">
+            <button class="btn" type="button" data-copy="wa">Copy</button>
+            <a class="btn" href="https://wa.me/1872917022" target="_blank" rel="noopener">Open WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="in">
+    <a class="brand" href="#top">Diel</a>
+    <div>&copy; 2026 Diel: A Diels Concept. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  /* copy buttons */
+  document.querySelectorAll("[data-copy]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var el = document.getElementById(btn.getAttribute("data-copy"));
+      var text = el.textContent.trim();
+      var done = function () { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy"; }, 1600); };
+      var fallback = function () {
+        var r = document.createRange(); r.selectNodeContents(el);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        btn.textContent = "Selected";
+        setTimeout(function () { btn.textContent = "Copy"; }, 1600);
+      };
+      try {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } catch (e) { fallback(); }
+    });
+  });
+
+  /* drifting motes of light */
+  var c = document.getElementById("motes");
+  if (!c || !c.getContext) return;
+  var ctx = c.getContext("2d");
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), motes = [];
+  function size() {
+    var r = c.getBoundingClientRect();
+    w = r.width; h = r.height;
+    c.width = Math.max(1, Math.floor(w * dpr)); c.height = Math.max(1, Math.floor(h * dpr));
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var n = Math.round(Math.min(70, w / 14));
+    motes = [];
+    for (var i = 0; i < n; i++) motes.push({ x: Math.random() * w, y: Math.random() * h, r: Math.random() * 1.6 + 0.4, v: Math.random() * 0.25 + 0.05, p: Math.random() * 6.28 });
+  }
+  function draw(t) {
+    ctx.clearRect(0, 0, w, h);
+    for (var i = 0; i < motes.length; i++) {
+      var m = motes[i];
+      var a = 0.35 + 0.35 * Math.sin(t / 900 + m.p);
+      ctx.beginPath();
+      ctx.fillStyle = "rgba(246, 218, 188, " + a.toFixed(3) + ")";
+      ctx.arc(m.x, m.y, m.r, 0, 6.283);
+      ctx.fill();
+      if (!reduce) { m.y -= m.v; if (m.y < -4) { m.y = h + 4; m.x = Math.random() * w; } }
+    }
+    if (!reduce) requestAnimationFrame(draw);
+  }
+  size();
+  draw(0);
+  window.addEventListener("resize", function () { size(); if (reduce) draw(0); });
+})();
+</script>
+</body>
+</html>
